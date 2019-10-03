@@ -6,14 +6,14 @@
     android:layout_height="match_parent"
     android:weightSum="2"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".Product"
+    tools:context=".Producto"
     tools:showIn="@layout/activity_product">
 
     <ImageView
         android:id="@+id/imageView"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:padding="10dp"
-        android:layout_width="0dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline3"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toEndOf="parent"
@@ -36,41 +36,42 @@
         android:textSize="40sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline5"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/prod_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
-        android:textSize="30sp"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline5"
-        app:layout_constraintVertical_bias="0.15" />
+        app:layout_constraintTop_toTopOf="@+id/guideline5" />
 
-    <Button
-        android:id="@+id/button"
+
+    <TextView
+        android:id="@+id/prod_availability"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
+        android:text="TextView"
+        android:textSize="24sp"
+        android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline4" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.75" />
+        app:layout_constraintTop_toBottomOf="@+id/prod_price" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.625" />
+        app:layout_constraintGuide_percent="0.63" />
+
+    <Switch
+        android:id="@+id/switch1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/prod_availability"
+        app:layout_constraintEnd_toEndOf="@+id/imageView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

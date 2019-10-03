@@ -4,5 +4,8 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="title_activity_product_actv">Product_actv</string>
-    <string name="title_activity_product">Product</string>
+    <string name="title_activity_product">Producto</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="confirmar">Confirmar</string>
+    <string name="text_confirm_new_prod_name">Ingrese nuevo nombre</string>
 </resources>

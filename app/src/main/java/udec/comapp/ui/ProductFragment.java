@@ -16,7 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import udec.comapp.Product;
+import udec.comapp.Producto;
 import udec.comapp.R;
 
 public class ProductFragment extends Fragment {
@@ -55,7 +55,7 @@ public class ProductFragment extends Fragment {
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                    Intent myIntent = new Intent(view.getContext(), Product.class);
+                    Intent myIntent = new Intent(view.getContext(), Producto.class);
                     myIntent.putExtra("name",productos[position]);
                     myIntent.putExtra("price",precios[position]);
                     startActivityForResult(myIntent, 0);
