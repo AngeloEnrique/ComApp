@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+        android:id="@+id/nav_ven_products"
+        android:icon="@drawable/ic_restaurant_menu_black_24dp"
+        android:title="Productos" />
+
+    <item
+        android:id="@+id/nav_ven_profile"
+        android:icon="@drawable/ic_person_black_24dp"
+        android:title="Perfil" />
+
+    <item
+        android:id="@+id/nav_ven_exit"
+        android:icon="@drawable/ic_arrow_back_black_24dp"
+        android:title="Salir" />
+
+</menu>
