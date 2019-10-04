@@ -13,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import static udec.comapp.R.menu.ven_prod;
@@ -20,9 +21,15 @@ import static udec.comapp.R.menu.ven_prod;
 public class Producto extends AppCompatActivity {
     private String name;
     private String price;
+    private Boolean availability;
     private TextView tname;
     private TextView tprice;
+    private TextView tavailability;
     private Menu menu;
+
+    private EditText inname;
+    private EditText inprice;
+    private Switch svail;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,12 +38,29 @@ public class Producto extends AppCompatActivity {
         setSupportActionBar(toolbar);
         name=getIntent().getExtras().getString("name");
         price=getIntent().getExtras().getString("price");
+        availability=getIntent().getExtras().getBoolean("availability");
 
         tname=(TextView) findViewById(R.id.prod_name);
         tprice=(TextView) findViewById(R.id.prod_price);
+        tavailability=(TextView) findViewById(R.id.prod_availability);
+        inname = (EditText) findViewById(R.id.in_name);
+        inprice = (EditText) findViewById(R.id.in_price);
+        svail = (Switch) findViewById(R.id.sw_avail);
 
         tname.setText(name);
         tprice.setText(price);
+        inname.setHint(name);
+        inprice.setHint(price);
+        svail.setChecked(availability);
+
+        inname.setVisibility(View.INVISIBLE);
+        inprice.setVisibility(View.INVISIBLE);
+        svail.setVisibility(View.INVISIBLE);
+
+
+        if(availability)tavailability.setText(R.string.disponible);
+        else tavailability.setText(R.string.no_disponible);
+
 
 
         tname.setOnLongClickListener(new View.OnLongClickListener() {
@@ -66,11 +90,11 @@ public class Producto extends AppCompatActivity {
         // Handle item selection
         switch (item.getItemId()) {
             case R.id.appbar_edit:
-                menu.findItem(R.id.appbar_oferta).setVisible(false);
-                menu.findItem(R.id.appbar_edit).setVisible(false);
-                menu.findItem(R.id.appbar_aceptar).setVisible(true);
-                menu.findItem(R.id.appbar_cancelar).setVisible(true);
-                return true;
+                inname.setVisibility(View.VISIBLE);
+                inprice.setVisibility(View.VISIBLE);
+                svail.setVisibility(View.VISIBLE);
+                tname.setVisibility(View.INVISIBLE);
+                tprice.setVisibility(View.INVISIBLE);
             case R.id.appbar_oferta:
                 menu.findItem(R.id.appbar_oferta).setVisible(false);
                 menu.findItem(R.id.appbar_edit).setVisible(false);
@@ -78,16 +102,16 @@ public class Producto extends AppCompatActivity {
                 menu.findItem(R.id.appbar_cancelar).setVisible(true);
                 return true;
             case R.id.appbar_aceptar:
-                menu.findItem(R.id.appbar_oferta).setVisible(true);
-                menu.findItem(R.id.appbar_edit).setVisible(true);
-                menu.findItem(R.id.appbar_aceptar).setVisible(false);
-                menu.findItem(R.id.appbar_cancelar).setVisible(false);
-                return true;
             case R.id.appbar_cancelar:
                 menu.findItem(R.id.appbar_oferta).setVisible(true);
                 menu.findItem(R.id.appbar_edit).setVisible(true);
                 menu.findItem(R.id.appbar_aceptar).setVisible(false);
                 menu.findItem(R.id.appbar_cancelar).setVisible(false);
+                inname.setVisibility(View.INVISIBLE);
+                inprice.setVisibility(View.INVISIBLE);
+                svail.setVisibility(View.INVISIBLE);
+                tname.setVisibility(View.VISIBLE);
+                tprice.setVisibility(View.VISIBLE);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

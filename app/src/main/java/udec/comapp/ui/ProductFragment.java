@@ -26,7 +26,8 @@ public class ProductFragment extends Fragment {
 
     int[] imagenes = {R.mipmap.ic_l};
 
-    String[] precios = {"$ 1000","$ 1500","$ 2000","$ 2000","$ 2000","$ 2000","$ 2000"};
+    String[] precios = {"$ 1 000","$ 1 500","$ 2 000","$ 2 000","$ 2 000","$ 2 000","$ 2 000"};
+    Boolean[] disponible= {true, false, true, false, true ,false ,true};
 
     @Nullable
     @Override
@@ -58,6 +59,7 @@ public class ProductFragment extends Fragment {
                     Intent myIntent = new Intent(view.getContext(), Producto.class);
                     myIntent.putExtra("name",productos[position]);
                     myIntent.putExtra("price",precios[position]);
+                    myIntent.putExtra("availability",disponible[position]);
                     startActivityForResult(myIntent, 0);
             }
         });
@@ -92,7 +94,7 @@ public class ProductFragment extends Fragment {
             imageView.setImageResource(imagenes[0]);
             textView.setText(productos[position]);
             textView1.setText(precios[position]);
-
+            //ACA ALGO SOBRE LA DISPONIBILIDAD
             return convertView;
         }
     }

@@ -8,4 +8,6 @@
     <string name="cancelar">Cancelar</string>
     <string name="confirmar">Confirmar</string>
     <string name="text_confirm_new_prod_name">Ingrese nuevo nombre</string>
+    <string name="disponible">Disponible</string>
+    <string name="no_disponible">No Disponible</string>
 </resources>
