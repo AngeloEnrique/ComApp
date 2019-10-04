@@ -2,33 +2,46 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
-        android:id="@+id/ll_content"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
 
-        <Button
-            android:id="@+id/foroButton"
-            android:layout_width="156dp"
-            android:layout_height="70dp"
-            android:layout_marginTop="72dp"
-            android:text="@string/foro" />
+    <Button
+        android:id="@+id/foroButton"
+        android:layout_width="245dp"
+        android:layout_height="76dp"
+        android:layout_marginTop="85dp"
+        android:layout_marginBottom="36dp"
+        android:text="@string/foro"
+        app:layout_constraintBottom_toTopOf="@+id/centralButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/centralButton"
-            android:layout_width="156dp"
-            android:layout_height="70dp"
-            android:text="@string/central" />
+    <Button
+        android:id="@+id/centralButton"
+        android:layout_width="243dp"
+        android:layout_height="69dp"
+        android:layout_marginBottom="49dp"
+        android:text="@string/central"
+        app:layout_constraintBottom_toTopOf="@+id/educaButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.511"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/foroButton" />
 
-        <Button
-            android:id="@+id/educaButton"
-            android:layout_width="156dp"
-            android:layout_height="70dp"
-            android:text="@string/educaci_n" />
-    </LinearLayout>
+    <Button
+        android:id="@+id/educaButton"
+        android:layout_width="246dp"
+        android:layout_height="69dp"
+        android:layout_marginBottom="351dp"
+        android:text="@string/educaci_n"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/centralButton" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
