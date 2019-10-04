@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity">
+    <item
+        android:id="@+id/appbar_oferta"
+        android:orderInCategory="300"
+        android:title="Ofertar"
+        app:showAsAction="ifRoom"></item>
+    <item
+        android:id="@+id/appbar_edit"
+        android:orderInCategory="300"
+        android:title="Editar"
+        app:showAsAction="ifRoom"></item>
+    <item
+        android:id="@+id/appbar_cancelar"
+        android:orderInCategory="300"
+        android:icon="@drawable/ic_arrow_back_white_24dp"
+        android:title="cancelar"
+        app:showAsAction="ifRoom"></item>
+    <item
+        android:id="@+id/appbar_aceptar"
+        android:orderInCategory="300"
+        android:icon="@drawable/ic_done_white_24dp"
+        android:title="aceptar"
+        app:showAsAction="ifRoom"></item>
+
+</menu>
