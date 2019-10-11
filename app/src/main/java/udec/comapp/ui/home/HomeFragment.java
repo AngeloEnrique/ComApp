@@ -25,7 +25,9 @@ import java.util.ArrayList;
 
 import udec.comapp.Listas;
 import udec.comapp.MainActivity;
+import udec.comapp.Producto;
 import udec.comapp.R;
+import udec.comapp.vendedor;
 
 public class HomeFragment extends Fragment {
 
@@ -128,8 +130,8 @@ public class HomeFragment extends Fragment {
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                Intent myIntent = new Intent(view.getContext(), Listas.class);
-
+                Intent myIntent = new Intent(view.getContext(), vendedor.class);
+                myIntent.putExtra("autenticado", Boolean.FALSE);
                 switch(sector){
                     case 0:
                         myIntent.putExtra("name",vendForo[position]);

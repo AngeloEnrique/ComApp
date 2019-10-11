@@ -30,6 +30,7 @@ public class vendedor extends AppCompatActivity {
     private EditText inprice;
     private Switch svail;
     private Menu menu;
+    private boolean autenticado;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +41,7 @@ public class vendedor extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction().replace(R.id.ven_fragment_container,
                 new ProductFragment()).commit();
 
+        autenticado = getIntent().getExtras().getBoolean("autenticado");
 /*
         tname = (TextView) findViewById(R.id.prod_name);
         tprice = (TextView) findViewById(R.id.prod_price);
@@ -113,7 +115,7 @@ public class vendedor extends AppCompatActivity {
                         case R.id.nav_ven_profile:
                             menu.findItem(R.id.appbar_aceptar).setVisible(false);
                             menu.findItem(R.id.appbar_cancelar).setVisible(false);
-                            menu.findItem(R.id.appbar_edit).setVisible(true);
+                            menu.findItem(R.id.appbar_edit).setVisible(autenticado);
                             selectedFragment = new ProfileFragment();
                             break;
                         case R.id.nav_ven_exit:
@@ -134,6 +136,11 @@ public class vendedor extends AppCompatActivity {
                     return !back;
                 }
             };
+
+
+    public boolean getAutenticado(){
+        return autenticado;
+    }
 }
 
 

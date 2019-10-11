@@ -19,6 +19,7 @@ import androidx.fragment.app.Fragment;
 
 import udec.comapp.Producto;
 import udec.comapp.R;
+import udec.comapp.vendedor;
 
 public class ProductFragment extends Fragment {
 
@@ -31,6 +32,7 @@ public class ProductFragment extends Fragment {
     Boolean[] disponible= {true, false, true, false, true};
     Boolean[] endescuento={false, false, true, false, false};
     String[] descuentos={"","","$ 1 000","",""};
+    private boolean autenticado;
 
     @Nullable
     @Override
@@ -43,7 +45,8 @@ public class ProductFragment extends Fragment {
 
         CustomAdapter customAdapter = new CustomAdapter();
 
-
+        vendedor act = (vendedor) getActivity();
+        autenticado = act.getAutenticado();
 
         ArrayAdapter<String> listViewAdapter = new ArrayAdapter<String>(
                 getActivity(),
@@ -60,11 +63,14 @@ public class ProductFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
                     Intent myIntent = new Intent(view.getContext(), Producto.class);
+
                     myIntent.putExtra("name",productos[position]);
                     myIntent.putExtra("price",precios[position]);
                     myIntent.putExtra("availability",disponible[position]);
                     myIntent.putExtra("discounted",endescuento[position]);
+                    myIntent.putExtra("discounted",endescuento[position]);
                     myIntent.putExtra("discount",descuentos[position]);
+                    myIntent.putExtra("autenticado", autenticado);
                     startActivityForResult(myIntent, 0);
             }
         });

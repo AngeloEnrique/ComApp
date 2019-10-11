@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -37,6 +38,7 @@ public class Producto extends AppCompatActivity {
     private EditText inprice;
     private Switch svail;
     private TextInputEditText inoferta;
+    private boolean autenticado;
 
     private ConstraintLayout promo;
     @Override
@@ -50,6 +52,8 @@ public class Producto extends AppCompatActivity {
         availability = getIntent().getExtras().getBoolean("availability");
         discounted = getIntent().getExtras().getBoolean("discounted");
         discount = getIntent().getExtras().getString("discount");
+        autenticado = getIntent().getExtras().getBoolean("autenticado");
+        Log.i("Producto", "onCreate Producto:" + autenticado);
 
         tname = findViewById(R.id.prod_name);
         tprice = findViewById(R.id.prod_price);
@@ -92,7 +96,7 @@ public class Producto extends AppCompatActivity {
         tname.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                showDialog(tname.getText().toString());
+                if(autenticado) showDialog(tname.getText().toString());
 
                 return true;
             }
@@ -108,6 +112,9 @@ public class Producto extends AppCompatActivity {
         getMenuInflater().inflate(ven_prod, menu);
         menu.findItem(R.id.appbar_aceptar).setVisible(false);
         menu.findItem(R.id.appbar_cancelar).setVisible(false);
+        menu.findItem(R.id.appbar_edit).setVisible(autenticado);
+        menu.findItem(R.id.appbar_oferta).setVisible(autenticado);
+
         return true;
     }
 
@@ -182,6 +189,7 @@ public class Producto extends AppCompatActivity {
         });
         builder.show();
     }
+
 
 }
 

@@ -30,6 +30,7 @@ public class DashboardFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getActivity(), vendedor.class);
+                i.putExtra("autenticado", Boolean.TRUE);
                 startActivity(i);
 
             }
