@@ -36,16 +36,16 @@ public class Producto extends AppCompatActivity {
         setContentView(R.layout.activity_product);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        name=getIntent().getExtras().getString("name");
-        price=getIntent().getExtras().getString("price");
-        availability=getIntent().getExtras().getBoolean("availability");
+        name = getIntent().getExtras().getString("name");
+        price = getIntent().getExtras().getString("price");
+        availability = getIntent().getExtras().getBoolean("availability");
 
-        tname=(TextView) findViewById(R.id.prod_name);
-        tprice=(TextView) findViewById(R.id.prod_price);
-        tavailability=(TextView) findViewById(R.id.prod_availability);
-        inname = (EditText) findViewById(R.id.in_name);
-        inprice = (EditText) findViewById(R.id.in_price);
-        svail = (Switch) findViewById(R.id.sw_avail);
+        tname = findViewById(R.id.prod_name);
+        tprice = findViewById(R.id.prod_price);
+        tavailability = findViewById(R.id.prod_availability);
+        inname = findViewById(R.id.in_name);
+        inprice = findViewById(R.id.in_price);
+        svail = findViewById(R.id.sw_avail);
 
         tname.setText(name);
         tprice.setText(price);
@@ -96,8 +96,8 @@ public class Producto extends AppCompatActivity {
                 tname.setVisibility(View.INVISIBLE);
                 tprice.setVisibility(View.INVISIBLE);
             case R.id.appbar_oferta:
-                menu.findItem(R.id.appbar_oferta).setVisible(false);
                 menu.findItem(R.id.appbar_edit).setVisible(false);
+                menu.findItem(R.id.appbar_oferta).setVisible(false);
                 menu.findItem(R.id.appbar_aceptar).setVisible(true);
                 menu.findItem(R.id.appbar_cancelar).setVisible(true);
                 return true;
@@ -123,7 +123,7 @@ public class Producto extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(getResources().getString(R.string.text_confirm_new_prod_name));
         View view = LayoutInflater.from(this).inflate(R.layout.dialog_view, null);
-        final EditText edit_dialog = (EditText) view.findViewById(R.id.edit_dialog);
+        final EditText edit_dialog = view.findViewById(R.id.edit_dialog);
         edit_dialog.setText(str);
         builder.setView(view);
         builder.setNegativeButton(getResources().getString(R.string.cancelar),null);
