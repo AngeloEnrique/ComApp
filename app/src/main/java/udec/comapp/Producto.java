@@ -2,11 +2,13 @@ package udec.comapp;
 
 
 import android.content.DialogInterface;
+import android.graphics.Paint;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -16,20 +18,27 @@ import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import com.google.android.material.textfield.TextInputEditText;
+
 import static udec.comapp.R.menu.ven_prod;
 
 public class Producto extends AppCompatActivity {
     private String name;
     private String price;
     private Boolean availability;
+    private Boolean discounted;
+    private String discount;
     private TextView tname;
     private TextView tprice;
     private TextView tavailability;
     private Menu menu;
-
+    private TextView disct;
     private EditText inname;
     private EditText inprice;
     private Switch svail;
+    private TextInputEditText inoferta;
+
+    private ConstraintLayout promo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +48,8 @@ public class Producto extends AppCompatActivity {
         name = getIntent().getExtras().getString("name");
         price = getIntent().getExtras().getString("price");
         availability = getIntent().getExtras().getBoolean("availability");
+        discounted = getIntent().getExtras().getBoolean("discounted");
+        discount = getIntent().getExtras().getString("discount");
 
         tname = findViewById(R.id.prod_name);
         tprice = findViewById(R.id.prod_price);
@@ -46,6 +57,8 @@ public class Producto extends AppCompatActivity {
         inname = findViewById(R.id.in_name);
         inprice = findViewById(R.id.in_price);
         svail = findViewById(R.id.sw_avail);
+
+        promo = findViewById(R.id.promo);
 
         tname.setText(name);
         tprice.setText(price);
@@ -57,10 +70,23 @@ public class Producto extends AppCompatActivity {
         inprice.setVisibility(View.INVISIBLE);
         svail.setVisibility(View.INVISIBLE);
 
+        promo.setVisibility(View.INVISIBLE);
+
+        disct = findViewById(R.id.discounted);
+
+        inoferta = findViewById(R.id.in_price_ofert);
 
         if(availability)tavailability.setText(R.string.disponible);
         else tavailability.setText(R.string.no_disponible);
 
+        if(discounted){
+            tprice.setPaintFlags(tprice.getPaintFlags()| Paint.STRIKE_THRU_TEXT_FLAG);
+            promo.setVisibility(View.VISIBLE);
+            findViewById(R.id.in_price_ofert).setVisibility(View.INVISIBLE);
+            disct.setVisibility(View.VISIBLE);
+            disct.setText(discount);
+
+        }
 
 
         tname.setOnLongClickListener(new View.OnLongClickListener() {
@@ -96,10 +122,15 @@ public class Producto extends AppCompatActivity {
                 tname.setVisibility(View.INVISIBLE);
                 tprice.setVisibility(View.INVISIBLE);
             case R.id.appbar_oferta:
+                String aux = disct.getText().toString();
                 menu.findItem(R.id.appbar_edit).setVisible(false);
                 menu.findItem(R.id.appbar_oferta).setVisible(false);
                 menu.findItem(R.id.appbar_aceptar).setVisible(true);
                 menu.findItem(R.id.appbar_cancelar).setVisible(true);
+                promo.setVisibility(View.VISIBLE);
+                disct.setVisibility(View.INVISIBLE);
+                inoferta.setHint(aux);
+                inoferta.setVisibility(View.VISIBLE);
                 return true;
             case R.id.appbar_aceptar:
             case R.id.appbar_cancelar:
@@ -112,6 +143,15 @@ public class Producto extends AppCompatActivity {
                 svail.setVisibility(View.INVISIBLE);
                 tname.setVisibility(View.VISIBLE);
                 tprice.setVisibility(View.VISIBLE);
+                inoferta.setVisibility(View.INVISIBLE);
+                if(discounted){
+                    promo.setVisibility(View.VISIBLE);
+                    disct.setVisibility(View.VISIBLE);
+                }
+                else {
+                    promo.setVisibility(View.INVISIBLE);
+                    disct.setVisibility(View.INVISIBLE);
+                }
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
