@@ -121,6 +121,13 @@ public class Producto extends AppCompatActivity {
                 svail.setVisibility(View.VISIBLE);
                 tname.setVisibility(View.INVISIBLE);
                 tprice.setVisibility(View.INVISIBLE);
+                if(discounted)promo.setVisibility(View.VISIBLE);
+                else promo.setVisibility(View.INVISIBLE);
+                menu.findItem(R.id.appbar_edit).setVisible(false);
+                menu.findItem(R.id.appbar_oferta).setVisible(false);
+                menu.findItem(R.id.appbar_aceptar).setVisible(true);
+                menu.findItem(R.id.appbar_cancelar).setVisible(true);
+                return true;
             case R.id.appbar_oferta:
                 String aux = disct.getText().toString();
                 menu.findItem(R.id.appbar_edit).setVisible(false);
