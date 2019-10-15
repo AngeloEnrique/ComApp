@@ -6,24 +6,26 @@
     <item
         android:id="@+id/appbar_oferta"
         android:orderInCategory="300"
-        android:title="Ofertar"
+        android:title="@string/ofertar"
         app:showAsAction="ifRoom"></item>
     <item
         android:id="@+id/appbar_edit"
         android:orderInCategory="300"
-        android:title="Editar"
+        android:title="@string/editar"
         app:showAsAction="ifRoom"></item>
     <item
         android:id="@+id/appbar_cancelar"
         android:orderInCategory="300"
         android:icon="@drawable/ic_arrow_back_white_24dp"
-        android:title="cancelar"
+        android:title="Cancelar"
         app:showAsAction="ifRoom"></item>
     <item
         android:id="@+id/appbar_aceptar"
         android:orderInCategory="300"
         android:icon="@drawable/ic_done_white_24dp"
-        android:title="aceptar"
+        android:title="Aceptar"
         app:showAsAction="ifRoom"></item>
+    <!--
+    -->
 
 </menu>

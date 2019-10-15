@@ -26,7 +26,7 @@ public class ProductFragment extends Fragment {
 
     String[] productos = {"Completo","Churrasco","Carnecita","Morrones","Lechuga"};
 
-    int[] imagenes = {R.mipmap.ic_l};
+    int[] imagenes = {R.mipmap.ic_l,R.mipmap.ic_churrasco};
 
     String[] precios = {"$ 1 000","$ 1 500","$ 2 000","$ 2 000","$ 500"};
     Boolean[] disponible= {true, false, true, false, true};

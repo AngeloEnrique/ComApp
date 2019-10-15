@@ -20,11 +20,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        /*
+
         MediaPlayer mediaPlayer = MediaPlayer.create(MainActivity.this, R.raw.pl);
         mediaPlayer.start();
 
-         */
 
         BottomNavigationView navView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each

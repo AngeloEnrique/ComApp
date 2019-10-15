@@ -16,4 +16,6 @@
     <string name="no_disponible">No Disponible</string>
     <string name="oferta">Oferta</string>
     <string name="nodisponible">(No disponible)</string>
+    <string name="ofertar">Ofertar</string>
+    <string name="editar">Editar</string>
 </resources>

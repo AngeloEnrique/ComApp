@@ -11,37 +11,39 @@
         android:id="@+id/foroButton"
         android:layout_width="245dp"
         android:layout_height="76dp"
-        android:layout_marginTop="85dp"
-        android:layout_marginBottom="36dp"
         android:text="@string/foro"
-        app:layout_constraintBottom_toTopOf="@+id/centralButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/guideline9"
+        app:layout_constraintStart_toStartOf="@+id/guideline9"
+        app:layout_constraintTop_toBottomOf="@+id/educaButton"
+        android:paddingTop="10dp" />
 
     <Button
         android:id="@+id/centralButton"
         android:layout_width="243dp"
         android:layout_height="69dp"
-        android:layout_marginBottom="49dp"
         android:text="@string/central"
-        app:layout_constraintBottom_toTopOf="@+id/educaButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.511"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/foroButton" />
+        app:layout_constraintEnd_toEndOf="@+id/guideline9"
+        app:layout_constraintEnd_toStartOf="@+id/guideline9"
+        app:layout_constraintStart_toStartOf="@+id/guideline9"
+        app:layout_constraintTop_toTopOf="parent"
+        android:paddingTop="10dp"/>
 
     <Button
         android:id="@+id/educaButton"
         android:layout_width="246dp"
         android:layout_height="69dp"
-        android:layout_marginBottom="351dp"
         android:text="@string/educaci_n"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/centralButton" />
+        app:layout_constraintEnd_toEndOf="@+id/guideline9"
+        app:layout_constraintStart_toStartOf="@+id/guideline9"
+        app:layout_constraintTop_toBottomOf="@+id/centralButton"
+        android:paddingTop="10dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

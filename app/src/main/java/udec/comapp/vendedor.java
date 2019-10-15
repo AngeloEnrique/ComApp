@@ -42,18 +42,8 @@ public class vendedor extends AppCompatActivity {
                 new ProductFragment()).commit();
 
         autenticado = getIntent().getExtras().getBoolean("autenticado");
-/*
-        tname = (TextView) findViewById(R.id.prod_name);
-        tprice = (TextView) findViewById(R.id.prod_price);
-        tavailability = (TextView) findViewById(R.id.prod_availability);
-        inname = (EditText) findViewById(R.id.in_name);
-        inprice = (EditText) findViewById(R.id.in_des);
-        svail = (Switch) findViewById(R.id.sw_avail);
 
-        inprice.setVisibility(View.INVISIBLE);
-        inprice.setVisibility(View.INVISIBLE);
-        svail.setVisibility(View.INVISIBLE);
-*/
+
     }
 
     @Override
