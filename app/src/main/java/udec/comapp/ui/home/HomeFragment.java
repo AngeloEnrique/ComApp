@@ -1,6 +1,9 @@
 package udec.comapp.ui.home;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -22,7 +25,9 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import udec.comapp.DBHelper;
 import udec.comapp.Listas;
 import udec.comapp.MainActivity;
 import udec.comapp.Producto;
@@ -36,15 +41,27 @@ public class HomeFragment extends Fragment {
     private LayoutInflater inflater;
     private ViewGroup container;
     private ViewGroup flContent;
+
+    /*
     private String[] vendForo = {"Viviana","Marcelo","Random", "Random2"};
     private String[] vendCentral = {"Tio de la Burger","Tio de las Pizzas"};
     private String[] vendEduca = {"Tia de las palomitas","Tio de la Comida Vegana"};
-    private int[] imagenes = {R.drawable.perfil_logo};
 
     private String[] descForo = {"Vende sus wenos sanguches","Vende sus wenas trufas","Random", "Random2"};
     private String[] descCentral = {"Las mejores hamburguesas de Shile","No hay mejores piczas"};
     private String[] descEduca = {"Mejores palomitas","Comida libre de animales"};
+*/
 
+    private int[] imagenes = {R.drawable.perfil_logo};
+    private List<String> vendForo = new ArrayList<String>();
+    private List<String> vendCentral = new ArrayList<String>();
+    private List<String> vendEduca =new ArrayList<String>();
+
+    private List<String> descForo = new ArrayList<String>();
+    private List<String> descCentral = new ArrayList<String>();
+    private List<String> descEduca = new ArrayList<String>();
+
+    private List<Boolean> disponible = new ArrayList<Boolean>();
 
     public View onCreateView(@NonNull final LayoutInflater inflater,
                              final ViewGroup container, Bundle savedInstanceState) {
@@ -60,6 +77,28 @@ public class HomeFragment extends Fragment {
                 textView.setText(s);
             }
         });*/
+
+        DBHelper admin = new DBHelper(getActivity(),"vendedores",null,1);
+        SQLiteDatabase db = admin.getWritableDatabase();
+        Cursor vend = admin.getAllVend(db);
+        if(vend.moveToFirst()){
+            do{
+                if(vend.getString(4).equals("Educa")){
+                    vendEduca.add(vend.getString(2));
+                    descEduca.add(vend.getString(5));
+                }
+                else if(vend.getString(4).equals("Foro")){
+                    vendForo.add(vend.getString(2));
+                    descForo.add(vend.getString(5));
+                }
+                else if(vend.getString(4).equals("Central")){
+                    vendCentral.add(vend.getString(2));
+                    descCentral.add(vend.getString(5));
+                }
+                if(vend.getInt(3)==1) disponible.add(true);
+                else disponible.add(false);
+            }while(vend.moveToNext());
+        }
 
         Button foro = (Button) root.findViewById(R.id.foroButton);
         Button central = root.findViewById(R.id.centralButton);
@@ -93,6 +132,7 @@ public class HomeFragment extends Fragment {
 
             }
         });
+        db.close();
         return root;
     }
 
@@ -134,13 +174,13 @@ public class HomeFragment extends Fragment {
                 myIntent.putExtra("autenticado", Boolean.FALSE);
                 switch(sector){
                     case 0:
-                        myIntent.putExtra("name",vendForo[position]);
+                        myIntent.putExtra("name",vendForo.get(position));
                         break;
                     case 1:
-                        myIntent.putExtra("name",vendCentral[position]);
+                        myIntent.putExtra("name",vendCentral.get(position) );
                         break;
                     default:
-                        myIntent.putExtra("name",vendEduca[position]);
+                        myIntent.putExtra("name",vendEduca.get(position) );
                         break;
                 }
                 startActivityForResult(myIntent, 0);
@@ -153,11 +193,11 @@ public class HomeFragment extends Fragment {
         @Override
         public int getCount() {
             if(sector == 0) {
-                return vendForo.length;
+                return vendForo.size();
             }else if(sector == 1) {
-                return vendCentral.length;
+                return vendCentral.size();
             }else{
-                return vendEduca.length;
+                return vendEduca.size();
             }
         }
 
@@ -181,18 +221,23 @@ public class HomeFragment extends Fragment {
             imageView.setImageResource(imagenes[0]);
             switch(sector){
                 case 0:
-                    textView.setText(vendForo[position]);
-                    textView1.setText(descForo[position]);
+                    textView.setText(vendForo.get(position));
+                    textView1.setText(descForo.get(position));
+
                     break;
                 case 1:
-                    textView.setText(vendCentral[position]);
-                    textView1.setText(descCentral[position]);
+                    textView.setText(vendCentral.get(position));
+                    textView1.setText(descCentral.get(position));
                     break;
                 default:
-                    textView.setText(vendEduca[position]);
-                    textView1.setText(descEduca[position]);
+                    textView.setText(vendEduca.get(position));
+                    textView1.setText(descEduca.get(position));
                     break;
 
+            }
+            if(!disponible.get(position)) {
+                textView.setPaintFlags(textView.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+                convertView.setBackgroundColor(getResources().getColor(R.color.colorLightBlack));
             }
             return convertView;
         }

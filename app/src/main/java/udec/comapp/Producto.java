@@ -91,8 +91,6 @@ public class Producto extends AppCompatActivity {
             disct.setText(discount);
 
         }
-
-
         tname.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
@@ -151,7 +149,7 @@ public class Producto extends AppCompatActivity {
                 menu.findItem(R.id.appbar_oferta).setVisible(true);
                 menu.findItem(R.id.appbar_edit).setVisible(true);
                 menu.findItem(R.id.appbar_aceptar).setVisible(false);
-                menu.findItem(R.id.appbar_cancelar).setVisible(false);
+                menu    .findItem(R.id.appbar_cancelar).setVisible(false);
                 inname.setVisibility(View.INVISIBLE);
                 inprice.setVisibility(View.INVISIBLE);
                 svail.setVisibility(View.INVISIBLE);

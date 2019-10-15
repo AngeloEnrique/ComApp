@@ -22,7 +22,6 @@ public class ProfileFragment extends Fragment {    private String name;
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.ven_perfil, container, false);
     }
-
 }
 
 
